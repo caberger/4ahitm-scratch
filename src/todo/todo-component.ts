@@ -9,7 +9,7 @@ const tableTemplate = (todos: ToDo[]) => {
             <th>${todo.id}</th>
             <th>${todo.userId}</th>
             <th>${todo.title}</th>
-            <th>${todo.completed ? "ja" : "nein"}</th>            
+            <th>${todo.completed ? "👍" : "😢"}</th>            
             </tr>
         `
     )
