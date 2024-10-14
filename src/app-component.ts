@@ -2,7 +2,9 @@ import { html, render } from "lit-html"
 import "./todo"
 
 const content = html`
-    <todo-component></todo-component>
+    <div class="container">
+        <todo-component></todo-component>
+    </div>
 `
 
 class AppComponent extends HTMLElement {
