@@ -1,1 +1,3 @@
-console.log("Hello World!");
+import "./app-component"
+
+console.log("Hello World!")
