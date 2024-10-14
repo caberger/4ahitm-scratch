@@ -1,3 +1,3 @@
 import "./app-component"
+import "./todo/todo-component"
 
-console.log("Hello World!")
