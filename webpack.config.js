@@ -14,7 +14,7 @@ const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader
 const config = {
     entry: './src/index.ts',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'target'),
     },
     devServer: {
         open: true,
@@ -23,6 +23,8 @@ const config = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html',
+            hash: true,
+            scriptLoading: "module"
         }),
 
         // Add your plugins here
