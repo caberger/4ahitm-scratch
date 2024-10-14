@@ -1,8 +1,9 @@
+import { ToDo } from "src/model"
+
 const BASE_URL = "https://jsonplaceholder.typicode.com"
 
-export async function loadAllTodos() {
-    const todoURL = `${BASE_URL}/todos`
-    const response = await fetch(todoURL)
-    const todos = await response.json()
-    console.log("todos: ", todos)
+export async function loadAllToDos() {
+    const response = await fetch(`${BASE_URL}/todos`)
+    const todos: ToDo[] = await response.json()
+    return todos
 }
