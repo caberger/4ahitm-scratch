@@ -1,5 +1,6 @@
 package at.ac.htl;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +12,10 @@ public class ToDo {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public Long id;
     public Long userId;
+
+    @Column(unique=true)
     public String title;
+
     public boolean completed;
 }
 
