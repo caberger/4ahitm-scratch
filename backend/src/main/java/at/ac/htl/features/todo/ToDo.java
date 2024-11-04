@@ -1,4 +1,4 @@
-package at.ac.htl;
+package at.ac.htl.features.todo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
