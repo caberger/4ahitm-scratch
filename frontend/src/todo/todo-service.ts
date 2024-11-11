@@ -1,6 +1,6 @@
 import { ToDo } from "src/model"
 
-const BASE_URL = "https://jsonplaceholder.typicode.com"
+const BASE_URL = "/api"
 
 export async function loadAllToDos() {
     const response = await fetch(`${BASE_URL}/todos`)
