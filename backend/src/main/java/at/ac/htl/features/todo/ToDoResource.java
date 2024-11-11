@@ -12,10 +12,14 @@ import jakarta.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class ToDoResource {
     @Inject ToDoRepository todoRepository;
+    @Inject ToDoMapper toDoMapper;
 
     @GET
-    public List<ToDo> all() {
-        var todos = todoRepository.findAll().list();
+    public List<ToDoDto> all() {
+        var todos = todoRepository.findAll()
+            .stream()
+            .map(toDoMapper::toResource)
+            .toList();
         return todos;
     }
 }

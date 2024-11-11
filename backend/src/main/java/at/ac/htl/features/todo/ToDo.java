@@ -10,12 +10,10 @@ import jakarta.persistence.Id;
 public class ToDo {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    public Long id;
-    public Long userId;
-
+    Long id;
+    Long userId;
     @Column(unique=true)
-    public String title;
-
-    public boolean completed;
+    String title;
+    boolean completed;
 }
 
