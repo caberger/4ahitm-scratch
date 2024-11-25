@@ -14,8 +14,14 @@ const tableTemplate = (todos: ToDo[]) => {
         `
     )
     return html`
+    <style>
+    body {
+        background-color: red;
+    }
+    </style>
+
     <table>
-        <thead>
+        <thead id="head">
             <tr>
                 <th>Id</th>
                 <th>UserId</th>
@@ -30,9 +36,15 @@ const tableTemplate = (todos: ToDo[]) => {
 `
 }
 class TodoComponent extends HTMLElement {
+    constructor() {
+        super()
+        this.attachShadow({mode: "open"})
+    }
     async connectedCallback() {
         const todos = await loadAllToDos()
-        render(tableTemplate(todos), this)
+        render(tableTemplate(todos), this.shadowRoot)
+        const head = this.shadowRoot.querySelector("head")
+        console.log("head is", head)
     }
 }
 customElements.define("todo-component", TodoComponent)
