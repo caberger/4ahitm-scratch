@@ -3,7 +3,7 @@ import "./todo"
 
 const content = html`
     <div class="container">
-        <todo-component></todo-component>
+        <todo-component my-name="Meine Todos" keine-ahnung="7"></todo-component>
     </div>
 `
 

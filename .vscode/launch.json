@@ -5,10 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "java",
-            "name": "Current File",
+            "name": "frontend",
             "request": "launch",
-            "mainClass": "${file}"
+            "type": "chrome",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}",
+            "sourceMaps": true
         },
         {
             "type": "java",
