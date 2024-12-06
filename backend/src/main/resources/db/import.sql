@@ -1,5 +1,5 @@
 INSERT INTO
-    public.todo (completed, id, userid, title)
+    ToDo (completed, id, userid, title)
 VALUES
     (false, 1, 0, 'My first ToDo'),
     (false, 2, 0, 'My 2nd ToDo'),

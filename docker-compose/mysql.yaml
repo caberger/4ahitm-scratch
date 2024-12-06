@@ -1,0 +1,21 @@
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb:lts
+    command: ["--skip-grant-tables"]
+    ports:
+      - 3306:3306
+    volumes:
+      - mariadb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: demo
+      MYSQL_DATABASE: demo
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      timeout: 20s
+      retries: 10      
+      start_period: 30s
+      start_interval: 2s
+volumes:
+  mariadb:
