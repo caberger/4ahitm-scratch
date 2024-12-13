@@ -1,23 +1,20 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
+const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const CopyWebpackPlugin = require("copy-webpack-plugin")
+const isProduction = process.env.NODE_ENV == 'production'
 
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const isProduction = process.env.NODE_ENV == 'production';
-
-
-const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
+const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : "style-loader"
 
 const config = {
-    entry: './src/index.ts',
+    entry: "./src/index.ts",
     output: {
-        path: path.resolve(__dirname, 'target'),
+        path: path.resolve(__dirname, "target"),
     },
     devtool: "cheap-source-map",
     devServer: {
         open: true,
-        host: 'localhost',
+        host: "localhost",
         port: 4200,
         proxy: [
             {
@@ -37,9 +34,12 @@ const config = {
             hash: true,
             scriptLoading: "module"
         }),
-
-        // Add your plugins here
-        // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+        new CopyWebpackPlugin({
+            patterns: [
+                {from: "./node_modules/@picocss/pico/css/pico.min.css", to: "styles"},
+                {from: "images", to: "images"}
+            ]
+        })
     ],
     module: {
         rules: [

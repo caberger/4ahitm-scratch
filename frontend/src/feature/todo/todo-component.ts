@@ -1,8 +1,7 @@
 import { html, render } from "lit-html"
 import { loadAllToDos } from "./todo-service"
-import { ToDo } from "src/model"
+import { ToDo } from "./todo"
 const styles = html`
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 `
 class TodoComponent extends HTMLElement {
     static observedAttributes = ["my-name", "keine-ahnung"]

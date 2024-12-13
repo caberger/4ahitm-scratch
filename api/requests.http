@@ -1,0 +1,10 @@
+@BACKEND_URL=http://localhost:8080/api
+
+###
+GET {{BACKEND_URL}}/chuck
+Accept: application/json
+
+###
+GET {{BACKEND_URL}}/chuck/random
+Accept: application/json
+###

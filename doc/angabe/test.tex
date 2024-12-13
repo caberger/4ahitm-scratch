@@ -1,0 +1,106 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{sidecap}
+\usepackage[ngerman]{babel}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\graphicspath{{Figures/}}
+
+\begin{document}
+
+\noindent
+\large\textbf{Webtechnlogie} \hfill \textbf{Pokèmon} \\
+\normalsize WS 2024/25 \hfill 1.Test/1ITP2/\\
+Prof. Aberger/Reder \hfill Datum: 16.11.2024\\
+\\
+
+\abstract{}
+Es ist eine Anwendung zu erstellen, die Pokemons in Tabellenform auflisten kann.
+Für den Zugriff und die Suche von Pokèmons gibt es ein vorgegebenes REST - Backend.
+Für dieses Backend ist eine Web-Anwendung zu erstellen, die einen Überblick über die angebotenen Produkte gibt.
+Die Datenbank ist relativ umfangreich. Deshalb lädt die Anwendung niemals alle Items in den Browser,
+sondern es wird immer nur eine Seite geladen mit typischeweise 10 Items. Dies gilt auch für die Suche.
+
+\section{Frameworks}
+
+Die Anwendung soll gut langzeit - wartbar sein, deshalb werden nur folgende Frameworks verwendet:
+\begin{itemize}
+	\item RxJs
+\end{itemize}
+
+
+\section{Screenshot}
+
+Im testall Verzeichnis finden Sie die Datei pokemon.mp4. Dort sehen Sie, wie eine solche Anwendung live aussehen soll. Es sind keine Seiten - Reloads erlaubt und
+es gibt kein Flackern beim Aktualisieren von Daten.
+
+\section{User Interface}
+Für die Suche ist oberhalb ein Suchfeld.\footnote{Jeder Tastendruck löst eine neue Suche aus.}
+Unterhalb der Tabelle befinden sich Buttons zum Vor- und zurückblättern, sowie Buttons die 1/10 der Gesamtseitenanzahl vor- oder zurückspringen
+und Buttons die an den Anfang bzw das Ende springen. Dies gilt auch für den Fall, dass mehr Suchergebnisse 
+vorhanden sind als auf eine Seite passen.
+
+\section{Server}
+Ein Startprojekt pokemon.tgz steht am testall Laufwerk zum Download bereit. 
+Der Server wird gestartet mit:
+\begin{verbatim}
+	cd ./server
+	npm start
+\end{verbatim}
+Danach steht das REST - API zur Verfügung unter:
+\href{http://localhost:8080}{http://localhost:8080}
+
+Eine Beispielanwendung mit allen Dependencies finden Sie im ./client Unterverzeichnis.
+Wechseln Sie in dieses Verzeichnis und starten Sie dann mit
+\begin{verbatim}
+npm start
+\end{verbatim}
+
+dann steht das REST-API auch über den Proxy 
+\href{http://localhost:4200/api}{http://localhost:4200/api} zur Verfügung\footnote{dies ist wegen CORS eher zu empfehlen als der 8080 Port}.
+
+In der Datei ./api/api.http finden Beispiele für alle REST - Aufrufe, die Sie benötigen. 
+\section{Anweisungen}
+
+- Da die Suchtabelle auch für andere Projekte wieder verwendbar werden soll, muss sie als Custom Element mit Shadow-DOM imlementiert werden.
+- Die Datei index.html ist schreibgeschützt und darf nicht verändert werden\footnote{diese wird beim Korrigieren der Arbeit mit der Originaldatei überschrieben}.
+- Es ist darauf zu achten, dass die Seite nicht flackert. 
+- Zu lange Texte werden abgeschnitten und werden sichtbar, wenn man mit der Maus darüber hovered.
+\section{Unterlagen}
+
+Am TestAll - Laufwerk ist die Dokumentation der Funktionalität von Standard Web-Browsern zu finden (developer.mozilla.org.tgz).
+Diese kann auf den lokalen Rechner kopiert und geöffnet werden. Ausserdem finden Sie einige andere Unterlagen dort.
+
+\section{Punkteverteilung}
+Maximal können 100 Punkte erreicht werden. Die Punkteverteilung ist in Tabelle \ref{tab:points} angegeben.
+\begin{table}[ht]
+\centering
+\caption{Punkteverteilung}
+
+\begin{tabular}{| l | r |} \cline{1-2} 
+\textbf{Aufgabe} &  \textbf{Punkte}  \\ \cline{1-2}
+Anzeige der Pokèmons in der Tabelle & 30 \\ \cline{1-2}
+Anzeige der Bilder(Sprite) zum Produkt & 10 \\ \cline{1-2}
+Seitenweise Darstellung (nächste/vorige Seite) & 15 \\ \cline{1-2}
+vollstänige Pagination (vor/zurück/start/ende/grosse Schritte)& 10\\ \cline{1-2}
+Suche & 25\\ \cline{1-2}
+Seitenweise Darstellung bei Suche & 10\\ \cline{1-2}
+\end{tabular}
+\label{tab:points}
+\end{table}
+
+\begin{figure}
+	\center
+	\includegraphics[width=\textwidth]{pokemon}
+	\label{fig:img}
+\end{figure}
+
+\end{document}

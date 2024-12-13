@@ -1,4 +1,4 @@
-import { ToDo } from "src/model"
+import { ToDo } from "./todo"
 
 const BASE_URL = "/api"
 

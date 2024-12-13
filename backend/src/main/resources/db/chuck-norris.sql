@@ -1,21 +1,10 @@
-#INSERT INTO
-#    ToDo (completed, id, userid, title)
-#VALUES
-#    (false, 1, 0, 'My first ToDo'),
-#    (false, 2, 0, 'My 2nd ToDo'),
-#    (false, 3, 0, 'My 3rd ToDo'),
-#    (false, 4, 0, 'My 4th ToDo'),
-#    (false, 5, 0, 'My 5th ToDo')
-#;
--- Chuck Norris was peeling an onion. He made the onion cry.
-
-insert into tb_joke (joke_text) values
+insert into joke (joke_text) values
     ('When Chuck Norris throws exceptions, it''s across the room'),
     ('All arrays Chuck Norris declares are of infinite size, because Chuck Norris knows no bounds'),
     ('Chuck Norris doesn''t have disk latency because the hard drive knows to hurry the hell up'),
     ('Chuck Norris writes code that optimizes itself'),
     ('Chuck Norris can''t test for equality because he has no equal'),
-    ('Chuck Norris doesn''t need garbage collection because he doesn''t call ''),Dispose(), he calls ''),DropKick()'''),
+    ('Chuck Norris doesn''t need garbage collection because he doesn''t call '),Dispose(), he calls '),DropKick()'),
     ('Chuck Norris''s first program was kill -9'),
     ('Chuck Norris burst the dot com bubble'),
     ('All browsers support the hex definitions #chuck and #norris for the colors black and blue'),
