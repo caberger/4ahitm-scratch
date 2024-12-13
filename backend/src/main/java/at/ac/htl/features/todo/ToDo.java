@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 @Entity
 public class ToDo {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     Long userId;
     @Column(unique=true)
