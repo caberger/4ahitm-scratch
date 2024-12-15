@@ -51,6 +51,13 @@ Die Datenbank wird gestartet mit
 \begin{verbatim}
 	startmysql
 \end{verbatim}
+Danach erstellen Sie die demo Datenbank mit:
+\begin{verbatim}
+	cd demo
+	chmod +x createdatabase.sh
+	./createdatabase.sh
+\end{verbatim}
+
 
 Username und Passwort finden sie in \begin{verbatim}backend/src/main/resources/application.properties\end{verbatim}
 
@@ -75,8 +82,8 @@ dann steht das REST-API auch über den Proxy
 In der Datei ./api/requests.http finden Beispiele für alle REST - Aufrufe, die Sie benötigen. 
 \section{Anweisungen}
 
+Die Programmierung erfolgt unter Ubuntu.
 Bei der Abgabe vorher fdie node modules und backend/target/ löschen. Die Abgabe erfolgt als .zip Datei.
-
 
 \section{Punkteverteilung}
 Maximal können 100 Punkte erreicht werden. Die Punkteverteilung ist in Tabelle \ref{tab:points} angegeben.

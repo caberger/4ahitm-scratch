@@ -39,6 +39,6 @@ pushd $EXPORT_DIR
     pushd ..
         rm -f $TAR_NAME
         tar --disable-copyfile -czf $TAR_NAME $EXPORT_NAME
-        #scp $TAR_NAME c.aberger@edufs:Downloads
+        scp $TAR_NAME c.aberger@edufs:Downloads
     popd
 popd
