@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 const isProduction = process.env.NODE_ENV == 'production'
 
-const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : "style-loader"
+//const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : "style-loader"
 
 const config = {
     entry: "./src/index.ts",
@@ -39,18 +39,21 @@ const config = {
                 {from: "./node_modules/@picocss/pico/css/pico.min.css", to: "styles"},
                 {from: "images", to: "images"}
             ]
+        }),
+        new MiniCssExtractPlugin({
+            filename: "styles/style.css"
         })
     ],
     module: {
         rules: [
             {
-                test: /\.(ts|tsx)$/i,
+                test: /\.ts$/i,
                 loader: 'ts-loader',
                 exclude: ['/node_modules/'],
             },
             {
                 test: /\.css$/i,
-                use: [stylesHandler,'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,

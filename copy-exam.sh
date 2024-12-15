@@ -2,21 +2,30 @@
 
 set -e
 
-EXPORT_DIR=~/Downloads/todos
-rm -rf $EXPORT_DIR todos.tgz
+EXPORT_NAME=chuck-norris
+TAR_NAME=$EXPORT_NAME.tgz
+EXPORT_DIR=~/Downloads/$EXPORT_NAME
+
+rm -rf $EXPORT_DIR 
 pushd frontend
-rm -rf node_modules package-lock.json target dist
+    rm -rf node_modules package-lock.json target dist
 popd
 pushd backend
-rm -rf target
+    rm -rf target
 popd
 
 mkdir -p $EXPORT_DIR
 cp -r . $EXPORT_DIR
 pushd $EXPORT_DIR
+    pushd backend/src/main/java/at/ac/htl
+        rm Mapper.java
+        rm -r ./features/{todo,chuck}
+    popd
+    rm -rf .git .gitsecret
+    rm -rf ./docker-compose/
+    rm -rf doc
     pushd frontend
         #npm install
-        rm -rf ./target
         chmod -w index.html
     popd
     pushd backend
@@ -24,8 +33,8 @@ pushd $EXPORT_DIR
     rm -f copy-exam.sh
     rm -f mysql/st*.sh
     pushd ..
-        rm -f exam-todo.tgz
-        tar --disable-copyfile -czf exam-todo.tgz todos
-        scp exam-todo.tgz c.aberger@edufs:Downloads
+        rm -f $TAR_NAME
+        tar --disable-copyfile -czf $TAR_NAME $EXPORT_NAME
+        scp $TAR_NAME c.aberger@edufs:Downloads
     popd
 popd

@@ -4,6 +4,7 @@ import java.util.List;
 
 import at.ac.htl.Mapper;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.logging.Log;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -33,7 +34,8 @@ public class ChuckNorrisResource {
 class ChuckNorrisRepository implements PanacheRepository<TbJoke> {
     TbJoke getRandomJoke() {
         var numberOfJokes = count();
-        var randomJokeNumber = (int)Math.round(numberOfJokes * Math.random());
+        var randomJokeNumber = (int)(numberOfJokes * Math.random());
+        Log.infof("sending joke %d", randomJokeNumber);
         var query = "select j from TbJoke j";
         var result = getEntityManager()
             .createQuery(query, TbJoke.class)

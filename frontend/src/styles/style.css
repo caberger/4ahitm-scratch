@@ -1,0 +1,10 @@
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+.grow-1 {
+    flex-grow: 1;
+}
+.center {
+    text-align: center;
+}

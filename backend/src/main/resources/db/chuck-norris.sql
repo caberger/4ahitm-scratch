@@ -4,7 +4,7 @@ insert into joke (joke_text) values
     ('Chuck Norris doesn''t have disk latency because the hard drive knows to hurry the hell up'),
     ('Chuck Norris writes code that optimizes itself'),
     ('Chuck Norris can''t test for equality because he has no equal'),
-    ('Chuck Norris doesn''t need garbage collection because he doesn''t call '),Dispose(), he calls '),DropKick()'),
+    ('Chuck Norris doesn''t need garbage collection because he doesn''t call ''Dispose()'', he calls ''DropKick()'''),
     ('Chuck Norris''s first program was kill -9'),
     ('Chuck Norris burst the dot com bubble'),
     ('All browsers support the hex definitions #chuck and #norris for the colors black and blue'),
