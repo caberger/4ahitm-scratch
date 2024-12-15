@@ -2,7 +2,7 @@
 
 set -e
 
-EXPORT_NAME=chuck-norris
+EXPORT_NAME=test-chuck-norris
 TAR_NAME=$EXPORT_NAME.tgz
 EXPORT_DIR=~/Downloads/$EXPORT_NAME
 
@@ -21,9 +21,13 @@ pushd $EXPORT_DIR
         rm Mapper.java
         rm -r ./features/{todo,chuck}
     popd
+    rm backend/src/main/resources/db/import.sql
     rm -rf .git .gitsecret
     rm -rf ./docker-compose/
     rm -rf doc
+    rm -f frontend/src/index.ts
+    cp demo-code/frontend/src/index.ts frontend/src
+    rm -rf demo-code
     pushd frontend
         #npm install
         chmod -w index.html
@@ -35,6 +39,6 @@ pushd $EXPORT_DIR
     pushd ..
         rm -f $TAR_NAME
         tar --disable-copyfile -czf $TAR_NAME $EXPORT_NAME
-        scp $TAR_NAME c.aberger@edufs:Downloads
+        #scp $TAR_NAME c.aberger@edufs:Downloads
     popd
 popd
