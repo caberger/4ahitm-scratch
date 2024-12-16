@@ -21,7 +21,6 @@ pushd $EXPORT_DIR
         rm Mapper.java
         rm -r ./features/{todo,chuck}
     popd
-    rm backend/src/main/resources/db/import.sql
     rm -rf .git .gitsecret
     rm -rf ./docker-compose/
     rm -rf doc
@@ -31,6 +30,8 @@ pushd $EXPORT_DIR
     pushd frontend
         #npm install
         chmod -w index.html
+        rm -rf src/feature/
+        rm -rf src/app-component.ts
     popd
     pushd backend
     popd
