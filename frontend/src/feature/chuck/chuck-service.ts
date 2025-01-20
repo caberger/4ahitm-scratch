@@ -1,3 +1,4 @@
+import { model } from "../model"
 import { ChuckNorris } from "./chuck"
 
 const BASE_URL = "./api"
@@ -8,6 +9,6 @@ export async function loadJokes() {
 }
 export async function loadRandomJoke() {
     const response = await fetch(`${BASE_URL}/chuck/random`)
-    const joke: ChuckNorris = await response.json()
-    return joke
+    model.joke = await response.json()
+    console.log("joke loaded", model.joke)
 }

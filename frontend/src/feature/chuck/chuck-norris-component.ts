@@ -1,16 +1,18 @@
-import { html, render } from "lit-html";
+import { html, render } from "lit-html"
 import { ChuckNorris } from "./chuck"
 import { loadRandomJoke } from "./chuck-service"
+import { Model, model, subscribe } from "../model"
 
 class ChuckNorrisComponment extends HTMLElement {
-    joke: ChuckNorris
     async connectedCallback() {
-        console.log("Chuck connected")
-        this.joke = await loadRandomJoke()
-        this.render()
+        subscribe(model => { 
+            console.log("model changed: ", model)
+            this.render(model)
+        })
+        loadRandomJoke()
     }
-    render() {
-        const jokeText = this.joke.jokeText
+    render(model: Model) {
+        const jokeText = model.joke.jokeText
         render(this.template(jokeText), this)
     }
     template(jokeText: string) {
@@ -45,8 +47,7 @@ class ChuckNorrisComponment extends HTMLElement {
         `
     }
     async reload() {
-        this.joke = await loadRandomJoke()
-        this.render()
+        loadRandomJoke()
     }
 }
 customElements.define("chuck-norris", ChuckNorrisComponment)
