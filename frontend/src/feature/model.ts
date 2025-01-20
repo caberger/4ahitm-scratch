@@ -2,12 +2,14 @@ import { ChuckNorris } from "./chuck/chuck"
 
 interface Model {
     joke: ChuckNorris
+    numberOfJokesShown: number
 }
 const state: Model = {
     joke: {
         id: 0,
         jokeText: ""
-    }
+    },
+    numberOfJokesShown: 0
 }
 
 type Subscription = (model:Model) => void
@@ -19,12 +21,10 @@ function subscribe(subscription: Subscription) {
 }
 const handler: ProxyHandler<Model> = {
     get(target, prop, receiver) {
-        console.log("get called", target, prop, receiver)
         return Reflect.get(target, prop, receiver);
     },
     set(model: Model, p: string | symbol, newValue: any, receiver: any) {
         const success = Reflect.set(model, p, newValue, receiver)
-        console.log("set called with new value", newValue)
         followers.forEach(follower => follower(model))
         return success
     }

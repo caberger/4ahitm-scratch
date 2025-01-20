@@ -1,12 +1,10 @@
 import { html, render } from "lit-html"
-import { ChuckNorris } from "./chuck"
 import { loadRandomJoke } from "./chuck-service"
-import { Model, model, subscribe } from "../model"
+import { Model, subscribe } from "../model"
 
 class ChuckNorrisComponment extends HTMLElement {
     async connectedCallback() {
         subscribe(model => { 
-            console.log("model changed: ", model)
             this.render(model)
         })
         loadRandomJoke()
@@ -16,7 +14,6 @@ class ChuckNorrisComponment extends HTMLElement {
         render(this.template(jokeText), this)
     }
     template(jokeText: string) {
-        console.log("render", jokeText)
         return html`
             <style>
                 #chuck {

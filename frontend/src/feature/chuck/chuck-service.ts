@@ -10,5 +10,6 @@ export async function loadJokes() {
 export async function loadRandomJoke() {
     const response = await fetch(`${BASE_URL}/chuck/random`)
     model.joke = await response.json()
-    console.log("joke loaded", model.joke)
+    model.numberOfJokesShown++
+    console.log("model:", model)
 }

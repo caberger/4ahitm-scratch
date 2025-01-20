@@ -1,5 +1,6 @@
 import { html, render } from "lit-html"
 import "./feature/chuck/chuck-norris-component"
+import "./feature/joke-counter/joke-counter"
 
 class AppComponent extends HTMLElement {
     connectedCallback() {
@@ -8,8 +9,11 @@ class AppComponent extends HTMLElement {
     content() {
         return html`
             <div class="container">
-                <chuck-norris @my-button-click=${(event: CustomEvent) => this.onMyButtonClick(event)}
-                    my-name="Meine Todos" keine-ahnung="7"></chuck-norris>
+                <chuck-norris @my-button-click=${(event: CustomEvent) => this.onMyButtonClick(event)}>
+                </chuck-norris>
+            </div>
+            <div>
+                <joke-counter></joke-counter>
             </div>
             `
     }
